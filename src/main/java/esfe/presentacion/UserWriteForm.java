@@ -173,6 +173,9 @@ public class UserWriteForm extends JDialog {
         // Se obtiene la contraseña del campo 'txtPassword' como un array de caracteres y se convierte a String.
         if (this.cud == CUD.CREATE) {
             this.en.setPasswordHash(new String(txtPassword.getPassword()));
+            if (this.en.getPasswordHash().trim().isEmpty()){
+                return false;
+            }
         }
 
         // Retorna true, indicando que los datos son válidos y se han asignado al objeto User.
