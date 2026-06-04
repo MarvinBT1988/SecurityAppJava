@@ -32,7 +32,8 @@ public class LoginForm extends JDialog {
         setTitle("Login"); // Establece el título de la ventana como "Login".
         pack(); // Ajusta el tamaño de la ventana para que quepan todos sus componentes preferidos.
         setLocationRelativeTo(mainForm); // Centra la ventana de inicio de sesión  relativa al formulario principal ('mainForm').
-
+        SwingUtils.elgirEstiloMaterialAzul(btnLogin);
+        SwingUtils.aplicarEstiloRedondeado(txtEmail,2);
         btnSalir.addActionListener(e -> System.exit(0)); // Agrega un ActionListener al botón 'btnSalir'. Cuando se hace clic en este botón, la aplicación se cerrará (terminando la JVM).
         btnLogin.addActionListener(e-> login()); // Agrega un ActionListener al botón 'btnLogin'. Cuando se hace clic en este botón, se ejecutará el método 'login()' de esta clase,  para realizar la lógica de autenticación.
         addWindowListener(new WindowAdapter() { // Agrega un WindowListener a esta ventana para escuchar eventos de ventana.

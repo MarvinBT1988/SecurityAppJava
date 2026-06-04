@@ -2,11 +2,13 @@ package esfe;
 
 import esfe.presentacion.LoginForm;
 import esfe.presentacion.MainForm;
+import esfe.presentacion.SwingUtils;
+
 import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-
+        SwingUtils.ConfigInicial();
         SwingUtilities.invokeLater(() -> {
             // Utiliza el hilo de despacho de eventos (Event Dispatch Thread - EDT) para asegurar
             // que todas las operaciones relacionadas con la interfaz gráfica de usuario (Swing)
