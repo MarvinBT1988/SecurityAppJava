@@ -1,12 +1,14 @@
 package esfe;
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import esfe.presentacion.LoginForm;
 import esfe.presentacion.MainForm;
 import javax.swing.*;
-
+import com.formdev.flatlaf.FlatIntelliJLaf;
 public class Main {
     public static void main(String[] args) {
-
+        // https://www.formdev.com/flatlaf/themes/
+        FlatIntelliJLaf.setup();
         SwingUtilities.invokeLater(() -> {
             // Utiliza el hilo de despacho de eventos (Event Dispatch Thread - EDT) para asegurar
             // que todas las operaciones relacionadas con la interfaz gráfica de usuario (Swing)
