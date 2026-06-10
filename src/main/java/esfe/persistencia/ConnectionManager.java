@@ -24,7 +24,7 @@ public class ConnectionManager {
      */
     private static final String STR_CONNECTION = "jdbc:sqlserver://DESKTOP-8H3DU89:1433; " +
             "encrypt=true; " +
-            "database=SecurityDB2025; " +
+            "database=SecurityDB2026; " +
             "trustServerCertificate=true;" +
             "user=java2025;" +
             "password=12345";
