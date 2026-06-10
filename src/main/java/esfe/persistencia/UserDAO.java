@@ -1,6 +1,7 @@
 package esfe.persistencia;
 
-import java.sql.PreparedStatement; // Clase para ejecutar consultas SQL preparadas, previniendo inyecciones SQL.
+import java.sql.PreparedStatement;
+import java.sql.Statement; // Clase para ejecutar consultas SQL preparadas, previniendo inyecciones SQL.
 import java.sql.ResultSet;        // Interfaz para representar el resultado de una consulta SQL.
 import java.sql.SQLException;     // Clase para manejar errores relacionados con la base de datos SQL.
 import java.util.ArrayList;       // Clase para crear listas dinámicas de objetos.
@@ -280,7 +281,10 @@ public class UserDAO {
         try {
             // Preparar la sentencia SQL para seleccionar un usuario por su correo electrónico,
             // contraseña hasheada y estado activo (status = 1).
-            ps = conn.connect().prepareStatement("SELECT id, name, email, status " +
+            //String sql = "SELECT id, name, email, status FROM Users WHERE email = '"+user.getEmail()+"' AND passwordHash = '"+PasswordHasher.hashPassword(user.getPasswordHash())+"' AND status = 1";
+
+           // Statement stmt = conn.connect().createStatement();
+             ps = conn.connect().prepareStatement("SELECT id, name, email, status " +
                     "FROM Users " +
                     "WHERE email = ? AND passwordHash = ? AND status = 1");
 
@@ -288,7 +292,7 @@ public class UserDAO {
             ps.setString(1, user.getEmail()); // Asignar el correo electrónico del usuario a autenticar.
             ps.setString(2, PasswordHasher.hashPassword(user.getPasswordHash())); // Hashear la contraseña proporcionada para compararla con la almacenada.
             rs = ps.executeQuery(); // Ejecutar la consulta SQL y obtener el resultado.
-
+            //rs = stmt.executeQuery(sql);
             // Verificar si se encontró un registro que coincida con las credenciales y el estado.
             if (rs.next()) {
                 // Si se encontró un usuario, asignar los valores de las columnas al objeto userAutenticate.

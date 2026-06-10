@@ -55,7 +55,7 @@
           <background color="-16432283"/>
           <font size="16"/>
           <foreground color="-1644305"/>
-          <text value="Login"/>
+          <text value="Iniciar"/>
         </properties>
       </component>
       <component id="c3e7b" class="javax.swing.JButton" binding="btnSalir">
