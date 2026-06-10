@@ -26,7 +26,7 @@ public class ConnectionManager {
             "encrypt=true; " +
             "database=SecurityDB2026; " +
             "trustServerCertificate=true;" +
-            "user=java2025;" +
+            "user=java20251;" +
             "password=12345";
 
     /**
