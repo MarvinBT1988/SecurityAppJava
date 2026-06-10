@@ -27,7 +27,7 @@ public class ConnectionManager {
             "database=SecurityDB2026; " +
             "trustServerCertificate=true;" +
             "user=java20251;" +
-            "password=12345";
+            "password=123456";
 
     /**
      * Representa la conexión activa a la base de datos. Inicialmente es nula.
