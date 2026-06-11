@@ -1,6 +1,6 @@
 package esfe.dominio;
 
 public class Rol {
-    // rama updatero1
-    // ok
+    // updaterol2
+    // me gusta los problemas
 }
