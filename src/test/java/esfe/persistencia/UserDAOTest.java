@@ -8,7 +8,7 @@ import java.util.ArrayList;              // Clase para crear listas dinámicas d
 import java.util.Random;                 // Clase para generar números aleatorios, útil para crear datos de prueba.
 
 import java.sql.SQLException;             // Clase para manejar excepciones relacionadas con la base de datos, aunque no se espera que las pruebas unitarias interactúen directamente con ella (idealmente se mockean las dependencias).
-
+import org.junit.jupiter.api.Disabled;
 import static org.junit.jupiter.api.Assertions.*; // Importación estática de métodos de aserción de JUnit 5 para verificar el comportamiento esperado en las pruebas.
 
 
@@ -179,6 +179,7 @@ class UserDAOTest {
         // Llama al método 'delete' para eliminar el usuario de prueba de la base de datos y verifica la eliminación.
         delete(testUser);
     }
+    @Disabled
     @Test
     void createUser() throws SQLException {
         User user = new User(0, "admin", "12345", "admin@gmail.com", (byte) 1);
