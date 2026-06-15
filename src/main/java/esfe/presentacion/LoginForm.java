@@ -74,4 +74,50 @@ public class LoginForm extends JDialog {
                     JOptionPane.ERROR_MESSAGE); // El tipo de icono que se muestra (error).
         }
     }
+    // =================================================================
+    // MÉTODO MAIN PARA INICIAR LA APLICACIÓN DESDE EL LOGIN
+    // =================================================================
+    public static void main(String[] args) {
+        // 1. Configurar el Look and Feel moderno (FlatLaf)
+        try {
+            com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTArcDarkIJTheme.setup();
+        } catch (Exception ex) {
+            System.err.println("No se pudo cargar el tema FlatLaf. Se usará el aspecto por defecto.");
+        }
+
+        // 2. Ejecutar la interfaz gráfica en el hilo seguro de despacho de eventos de Swing
+        SwingUtilities.invokeLater(() -> {
+            try {
+                // Instanciamos el formulario principal de la aplicación (se mantiene oculto al inicio)
+                MainForm mainForm = new MainForm();
+
+                // Instanciamos el formulario de Login pasándole la referencia del principal
+                LoginForm loginForm = new LoginForm(mainForm);
+
+                // Centramos y mostramos el cuadro de diálogo modal de Login
+                loginForm.setVisible(true);
+
+                // --- CONTROL DE FLUJO POST-LOGIN ---
+                // Como el JDialog es MODAL (setModal(true)), el código de aquí abajo se detiene
+                // y SOLO se ejecutará hasta que el LoginForm se cierre (haga .dispose()).
+
+                // Verificamos si el formulario principal ahora cuenta con un usuario autenticado
+                // (Nota: Asegúrate de tener el método 'getUserAutenticate()' o similar implementado en tu MainForm)
+                if (mainForm.getUserAutenticate() != null) {
+                    // Si el login fue exitoso, hacemos visible la pantalla principal del sistema
+                    mainForm.setVisible(true);
+                } else {
+                    // Si se cerró el login sin autenticar (y no se activó el System.exit), cerramos la JVM
+                    System.exit(0);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null,
+                        "Error crítico al iniciar el sistema: " + e.getMessage(),
+                        "Error de Sistema",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        });
+    }
 }

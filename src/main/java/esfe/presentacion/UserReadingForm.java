@@ -213,4 +213,38 @@ public class UserReadingForm extends JDialog {
             return null; // Retorna null en caso de error.
         }
     }
+    public static void main(String[] args) {
+        // 1. Configurar el Look and Feel (FlatLaf) para que se vea moderno
+        try {
+            // Intentamos aplicar el tema oscuro que usas en tu app
+            com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMTArcDarkIJTheme.setup();
+        } catch (Exception ex) {
+            System.err.println("No se pudo cargar el tema FlatLaf, se usará el diseño por defecto.");
+        }
+
+        // 2. Iniciar la interfaz en el hilo seguro de Swing
+        SwingUtilities.invokeLater(() -> {
+            try {
+                // Creamos la instancia ficticia del formulario principal requerido por el constructor
+                // Nota: Asegúrate de que MainForm tenga un constructor accesible (vacío o por defecto)
+                MainForm mainFormDummy = new MainForm();
+
+                // Instanciamos el formulario de lectura pasando el frame principal
+                UserReadingForm dialog = new UserReadingForm(mainFormDummy);
+
+                // Configuración de cierre segura para pruebas directas
+                dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+                // Hacemos visible el formulario
+                dialog.setVisible(true);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null,
+                        "Error al inicializar el formulario de prueba: " + e.getMessage(),
+                        "Error de Arranque",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        });
+    }
 }

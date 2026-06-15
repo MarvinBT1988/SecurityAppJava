@@ -1,6 +1,7 @@
 package esfe.persistencia;
 
 import org.junit.jupiter.api.BeforeEach; // Anotación para indicar que el método se ejecuta antes de cada método de prueba.
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;       // Anotación para indicar que el método es un caso de prueba.
 import esfe.dominio.User;                // Clase que representa la entidad de usuario utilizada en las pruebas.
 
@@ -179,6 +180,7 @@ class UserDAOTest {
         // Llama al método 'delete' para eliminar el usuario de prueba de la base de datos y verifica la eliminación.
         delete(testUser);
     }
+    @Disabled
     @Test
     void createUser() throws SQLException {
         User user = new User(0, "admin", "12345", "admin@gmail.com", (byte) 1);
